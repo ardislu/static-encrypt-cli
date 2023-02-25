@@ -20,6 +20,7 @@ fn main() {
     let cli = Cli::parse();
     let encoded_plaintext = cli.plaintext.as_bytes();
     let encoded_password = cli.password.as_bytes();
+    let additional_data = "https://github.com/ardislu/static-encrypt".as_bytes();
 
     let mut salt = [0u8; 32];
     let mut iv = [0u8; 12];
@@ -33,7 +34,7 @@ fn main() {
     let nonce = GenericArray::from_slice(&iv);
     let payload = Payload {
         msg: encoded_plaintext,
-        aad: &[],
+        aad: additional_data,
     };
     let ciphertext = Aes256Gcm::new(key).encrypt(nonce, payload).unwrap();
 
