@@ -28,7 +28,7 @@ fn main() {
     OsRng.fill_bytes(&mut iv);
 
     let mut key = [0u8; 32];
-    pbkdf2::pbkdf2::<Hmac<Sha512>>(encoded_password, &salt, 400_000, &mut key);
+    pbkdf2::pbkdf2::<Hmac<Sha512>>(encoded_password, &salt, 400_000, &mut key).unwrap();
 
     let key = GenericArray::from_slice(&key);
     let nonce = GenericArray::from_slice(&iv);

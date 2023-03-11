@@ -7,9 +7,9 @@ edition = "2021"
 [dependencies]
 aes-gcm = "0.10.1"
 base64 = "0.21.0"
-clap = { version = "4.1.6", features = ["derive"] }
+clap = { version = "4.1.8", features = ["derive"] }
 hmac = "0.12.1"
-pbkdf2 = { version = "0.11.0", default-features = false }
+pbkdf2 = { version = "0.12.1", default-features = false }
 rand_core = "0.6.4"
 sha2 = "0.10.6"
 
