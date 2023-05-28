@@ -5,9 +5,9 @@ description = "Encrypt any static content. This is a CLI companion for the stati
 edition = "2021"
 
 [dependencies]
-aes-gcm = "0.10.1"
-base64 = "0.21.0"
-clap = { version = "4.2.7", features = ["derive"] }
+aes-gcm = "0.10.2"
+base64 = "0.21.2"
+clap = { version = "4.3.0", features = ["derive"] }
 hmac = "0.12.1"
 pbkdf2 = { version = "0.12.1", default-features = false }
 rand_core = "0.6.4"
