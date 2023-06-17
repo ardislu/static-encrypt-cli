@@ -7,11 +7,11 @@ edition = "2021"
 [dependencies]
 aes-gcm = "0.10.2"
 base64 = "0.21.2"
-clap = { version = "4.3.0", features = ["derive"] }
+clap = { version = "4.3.4", features = ["derive"] }
 hmac = "0.12.1"
 pbkdf2 = { version = "0.12.1", default-features = false }
 rand_core = "0.6.4"
-sha2 = "0.10.6"
+sha2 = "0.10.7"
 
 # Optimize the release build for minimum binary size:
 # https://github.com/johnthagen/min-sized-rust
