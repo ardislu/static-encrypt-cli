@@ -1,9 +1,9 @@
-use aes_gcm::aead::{generic_array::GenericArray, Aead as _, KeyInit as _, Payload};
 use aes_gcm::Aes256Gcm;
-use base64::{engine::general_purpose, Engine as _};
+use aes_gcm::aead::{Aead as _, KeyInit as _, Payload, generic_array::GenericArray};
+use base64::{Engine as _, engine::general_purpose};
 use clap::Parser;
 use hmac::Hmac;
-use rand_core::{OsRng, RngCore as _};
+use rand_core::{OsRng, TryRngCore};
 use sha2::Sha512;
 
 #[derive(Parser)]
@@ -24,8 +24,8 @@ fn main() {
 
     let mut salt = [0u8; 32];
     let mut iv = [0u8; 12];
-    OsRng.fill_bytes(&mut salt);
-    OsRng.fill_bytes(&mut iv);
+    OsRng.try_fill_bytes(&mut salt).ok();
+    OsRng.try_fill_bytes(&mut iv).ok();
 
     let mut key = [0u8; 32];
     pbkdf2::pbkdf2::<Hmac<Sha512>>(encoded_password, &salt, 400_000, &mut key).unwrap();
